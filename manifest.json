@@ -1,0 +1,40 @@
+{
+   "name": "Res-Redirect",
+   "version": "0.0.1",
+   "description": "A static resources URL redirect tool.",
+   "icons": {
+      "128": "support/icon.png",
+      "16": "support/icon.png",
+      "32": "support/icon.png",
+      "48": "support/icon.png"
+   },
+   "action": {
+      "default_icon": {
+         "128": "support/icon.png",
+         "16": "support/icon.png",
+         "32": "support/icon.png",
+         "48": "support/icon.png"
+      },
+      "default_title": "Res-Redirect",
+      "default_popup": "popup.html"
+   },
+   "background": {
+      "service_worker": "dist/serviceWorker.js",
+      "matches": [
+         "<all_urls>"
+      ]
+   },
+   "host_permissions": [
+      "<all_urls>"
+   ],
+   "manifest_version": 3,
+   "options_page": "index.html",
+   "permissions": [
+      "webRequest",
+      "declarativeNetRequest",
+      "declarativeNetRequestFeedback",
+      "tabs",
+      "storage",
+      "unlimitedStorage"
+   ]
+}

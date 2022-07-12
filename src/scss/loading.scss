@@ -1,0 +1,69 @@
+@keyframes appShakeRight {
+  0% {
+    transform: translatex(0px)
+  }
+
+  100% {
+    transform: translatex(130px)
+  }
+}
+
+#loadingMask {
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #FFF;
+  font-size: 12px;
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .animation {
+    position: fixed;
+    z-index: 2001;
+    top: 50%;
+    left: 50%;
+    height: 0;
+    margin-left: -25px
+  }
+
+  .animation:after {
+    font-family: arial;
+    display: block;
+    margin-top: 10px;
+    margin-left: -5px;
+    content: 'LOADING'
+  }
+
+  .animation p {
+    position: absolute;
+    top: 0;
+    left: -50px;
+    display: block;
+    width: 150px;
+    height: 2px;
+    background-color: #027CFF
+  }
+
+  .animation b {
+    position: relative;
+    z-index: 1;
+    top: 0;
+    left: -50px;
+    display: block;
+    width: 20px;
+    height: 2px;
+    animation-name: appShakeRight;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    background-color: #ff9903
+  }
+}

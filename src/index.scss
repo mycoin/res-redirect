@@ -1,0 +1,20 @@
+@import '~antd/dist/antd.css';
+@import './scss/loading.scss';
+@import './scss/main.scss';
+
+body {
+  background: #f0f2f5;
+}
+
+.layout {
+  width: 1190px;
+  margin: 0 auto;
+
+  .layout-content {
+    min-height: 520px;
+    padding: 10px 20px;
+    margin: 10px 0;
+    background: #fff;
+  }
+}
+ 
