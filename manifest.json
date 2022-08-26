@@ -16,7 +16,7 @@
          "48": "support/icon.png"
       },
       "default_title": "Res-Redirect",
-      "default_popup": "popup.html"
+      "default_popup": "index.html?isMini=1"
    },
    "background": {
       "service_worker": "dist/serviceWorker.js",

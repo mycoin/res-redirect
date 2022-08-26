@@ -4,19 +4,19 @@ import { cleanHostCache } from '@/services'
 let initTime = Date.now()
 
 const createRecord = (record) => ({
-  status: true,
-  type: 'Equals',
+  enable: true,
+  type: 'useEqual',
   ...record,
   key: initTime--,
 })
 
 const cleanDNS = () => {
   if (cleanHostCache()) {
-    message.success('缓存DNS刷新成功！', 1, () => {
+    message.success('Clean host cache successfully.', 1, () => {
       chrome.tabs.reload()
     })
   } else {
-    message.error('缓存DNS失败')
+    message.error('Failed to clean hosts cache.')
   }
 }
 

@@ -1,12 +1,9 @@
 html,
 body {
-  background: #fff;
-}
-body {
   background: #f0f2f5;
 }
 #content {
-  min-width: 680px;
+  min-width: 380px;
   font-size: 12px;
 }
 
@@ -17,13 +14,18 @@ body {
 }
 
 .layout {
-  width: 990px;
+  width: 1080px;
   margin: 0 auto;
 
   .layout-content {
     min-height: 520px;
-    padding: 10px 20px;
     margin: 30px 0;
-    background: #fff;
+
+    .content-wrapper {
+      border-radius: 6px;
+      padding: 20px;
+      background: #fff;
+      margin-bottom: 15px;
+    }
   }
 }

@@ -1,14 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { ConfigProvider } from 'antd'
-import Application from './components/Application'
-import locale from './locale'
+import React from "react";
+import ReactDOM from "react-dom";
+import MainApplication from "./components/MainApplication";
 
-import './index.scss'
+import "./scss/index.scss";
 
-ReactDOM.render((
-  <ConfigProvider locale={locale}>
-    <Application />
-  </ConfigProvider>
-),
-document.getElementById('content'))
+const isMini = /isMini/.test(location.search);
+
+ReactDOM.render(
+  <MainApplication isMini={isMini} />,
+  document.getElementById("content")
+);

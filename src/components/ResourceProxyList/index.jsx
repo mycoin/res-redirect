@@ -2,13 +2,23 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
 import { Button, Input, Popconfirm, Select, Switch, Table } from 'antd'
-import { CopyOutlined, DeleteOutlined, PlusOutlined, SyncOutlined } from '@ant-design/icons'
-import { cleanDNS, createRecord } from './util'
+import { PlusOutlined, SyncOutlined } from '@ant-design/icons'
 import BaseExport from '../BaseExport'
+import { cleanDNS, createRecord } from '../util'
 
 import './index.scss'
 
 const { Option } = Select
+const placeholderMap = {
+  useEqual: {
+    onMatch: 'https://www.google.com',
+    targetResult: 'http://127.0.0.1:8080',
+  },
+  regex: {
+    onMatch: 'https?://(.*?).google.com/',
+    targetResult: 'http://127.0.0.1:8080/$1/',
+  },
+}
 
 class ModuleExport extends BaseExport {
   constructor(props) {
@@ -33,12 +43,12 @@ class ModuleExport extends BaseExport {
       columnList.push(config)
     }
 
-    addColumn('开启', 'status', 80)
-    addColumn('类型', 'type', 80)
-    addColumn('条件', 'onMatch')
-    addColumn('目标地址', 'targetResult')
-    addColumn('备注', 'note', 180)
-    addColumn('操作', 'option', 100)
+    addColumn('enable', 'enable', 80)
+    addColumn('type', 'type', 80)
+    addColumn('match', 'onMatch')
+    addColumn('target', 'targetResult')
+    addColumn('note', 'note', 180)
+    addColumn('option', 'option', 100)
 
     this.columns = columnList
   }
@@ -50,10 +60,10 @@ class ModuleExport extends BaseExport {
       })
     }
     return {
-      status: (value, index) => {
-        const handleChange = (status) => {
+      enable: (value, index) => {
+        const handleChange = (enable) => {
           updateRecordWith(index, {
-            status,
+            enable,
           })
         }
         return (
@@ -69,10 +79,7 @@ class ModuleExport extends BaseExport {
           })
         }
         return (
-          <Input
-            value={value}
-            placeholder="选填"
-            onChange={handleChange} />
+          <Input value={value} onChange={handleChange} />
         )
       },
       type: (value, index) => {
@@ -84,12 +91,13 @@ class ModuleExport extends BaseExport {
             className="field-type"
             value={value}
             onChange={handleChange}>
-            <Option value="Equals">等于</Option>
-            <Option value="Regex">正则表达式</Option>
+            <Option value="useEqual">useEqual</Option>
+            <Option value="regex">regex</Option>
           </Select>
         )
       },
       onMatch: (value, index, record) => {
+        const { type } = record
         const handleChange = (event) => {
           updateRecordWith(index, {
             onMatch: event.target.value,
@@ -98,11 +106,12 @@ class ModuleExport extends BaseExport {
         return (
           <Input
             value={value}
-            placeholder={record.type}
+            placeholder={(placeholderMap[type] || {}).onMatch}
             onChange={handleChange} />
         )
       },
-      targetResult: (value, index) => {
+      targetResult: (value, index, record) => {
+        const { type } = record
         const handleChange = (event) => {
           updateRecordWith(index, {
             targetResult: event.target.value,
@@ -111,6 +120,7 @@ class ModuleExport extends BaseExport {
         return (
           <Input
             value={value}
+            placeholder={(placeholderMap[type] || {}).targetResult}
             onChange={handleChange} />
         )
       },
@@ -127,16 +137,16 @@ class ModuleExport extends BaseExport {
         }
         return (
           <div className="field-option">
+            <Button onClick={handleCopy}>
+              Copy
+            </Button>
             <Popconfirm
-              title="确认删除该条记录吗？"
+              title="Will you remove this record?"
               onConfirm={handleRemove}>
               <Button type="primary" danger>
-                <DeleteOutlined />
+                Delete
               </Button>
             </Popconfirm>
-            <Button onClick={handleCopy}>
-              <CopyOutlined />
-            </Button>
           </div>
         )
       },
@@ -150,21 +160,26 @@ class ModuleExport extends BaseExport {
         dataList.push(createRecord())
       })
     }
+
     return (
       <div className="resource-proxy-list">
-        <div className="topbar-actions">
+        <div className="topbar-actions content-wrapper">
           <Button type="primary" onClick={handleAdd}>
-            <PlusOutlined />新增
+            <PlusOutlined />Add
           </Button>
           <Button onClick={cleanDNS}>
-            <SyncOutlined />刷新
+            <SyncOutlined />
+            clean DNS
           </Button>
         </div>
-        <Table
-          size="small"
-          bordered
-          columns={this.columns}
-          dataSource={value.proxyList} />
+        <div className="content-wrapper">
+          <Table
+            size="small"
+            bordered
+            columns={this.columns}
+            dataSource={value.proxyList} />
+        </div>
+
       </div>
     )
   }

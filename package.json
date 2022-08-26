@@ -12,9 +12,11 @@
     "url": "git@github.com:mycoin/res-redirect.git"
   },
   "takla": {
-    "entry": {
-      "index": "@/index",
-      "serviceWorker": "@/serviceWorker"
+    "webpack": {
+      "entry": {
+        "index": "@/index",
+        "serviceWorker": "@/serviceWorker"
+      }
     }
   },
   "dependencies": {

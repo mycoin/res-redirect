@@ -14,13 +14,17 @@ const createAddRules = (item, index) => {
   const { type, onMatch, targetResult } = item
   const ruleObject = {}
   const ruleRedirect = {}
-
-  if (type === 'Regex') {
+  if (!onMatch || !targetResult) {
+    return null
+  }
+  if (type === 'regex') {
     ruleRedirect.regexSubstitution = targetResult.replace('$', '\\')
     ruleObject.regexFilter = onMatch
-  } else if (type === 'Equals') {
+  } else if (type === 'useEqual') {
     ruleObject.urlFilter = onMatch
     ruleRedirect.url = targetResult
+  } else {
+    return null
   }
   return {
     id: index,
@@ -36,22 +40,27 @@ const createAddRules = (item, index) => {
   }
 }
 
-export default (data) => {
-  const { proxyList } = data
+export default (data, callback) => {
+  const { proxyList } = data || {}
 
   declarativeNetRequest.getDynamicRules((previousRules) => {
     const removeRuleIds = previousRules.map((rule) => rule.id)
-    const addRules = []
+    const addRules = [];
 
-    proxyList.forEach((item, index) => {
+    (proxyList || []).forEach((item, index) => {
       const rule = createAddRules(item, index + 1)
-      if (rule && item.status === true) {
+      if (rule && item.enable === true) {
         addRules.push(rule)
       }
     })
+
     declarativeNetRequest.updateDynamicRules({
       addRules,
       removeRuleIds,
+    }, () => {
+      if (typeof callback === 'function') {
+        callback()
+      }
     })
   })
 }
