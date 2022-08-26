@@ -1,9 +1,9 @@
-import cleanHostResolverCache from './cleanHostResolverCache'
+import cleanHostCache from './cleanHostCache'
 import storageService from './storageService'
-import resolveResRewrite from './resolveResRewrite'
+import updateNetRequest from './updateNetRequest'
 
+export default storageService
 export {
-  cleanHostResolverCache,
-  storageService,
-  resolveResRewrite,
+  cleanHostCache,
+  updateNetRequest,
 }

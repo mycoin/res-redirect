@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ConfigProvider } from 'antd'
-import Application from './containers/Application'
+import Application from './components/Application'
 import locale from './locale'
 
 import './index.scss'

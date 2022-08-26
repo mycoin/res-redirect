@@ -1,12 +1,10 @@
 const { sync, onChanged } = chrome.storage
 
 const internalMap = {}
-const set = (data) => {
-  sync.set({
-    data,
-    dataVersion: 1,
-  })
-}
+const set = (data) => sync.set({
+  data,
+  dataVersion: 1,
+})
 
 const get = (callback) => {
   if (typeof callback === 'function') {

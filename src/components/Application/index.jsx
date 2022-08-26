@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Layout } from 'antd'
 import produce from 'immer'
-import { storageService } from '@/services'
-import ResourceProxyList from '../components/ResourceProxyList'
+import { Layout } from 'antd'
+import storageService from '@/services'
+import ResourceProxyList from '../ResourceProxyList'
 
 const { Content } = Layout
+
 const defaultValueMap = {
   proxyList: [],
 }
@@ -15,7 +16,6 @@ class Application extends Component {
     this.state = {
       value: defaultValueMap,
     }
-
     storageService.get((value) => {
       this.setState({
         value: {

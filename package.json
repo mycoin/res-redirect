@@ -12,7 +12,10 @@
     "url": "git@github.com:mycoin/res-redirect.git"
   },
   "takla": {
-    "extends": "./webpack"
+    "entry": {
+      "index": "@/index",
+      "serviceWorker": "@/serviceWorker"
+    }
   },
   "dependencies": {
     "@alife/sample-ui": "^0.25.x",

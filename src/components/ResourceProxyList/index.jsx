@@ -1,35 +1,16 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { Component } from 'react'
-import { Button, Input, message, Popconfirm, Select, Switch, Table } from 'antd'
-import {
-  CopyOutlined,
-  DeleteOutlined,
-  PlusOutlined,
-  SyncOutlined } from '@ant-design/icons'
-import { cleanHostResolverCache } from '@/services'
+import React from 'react'
+import { Button, Input, Popconfirm, Select, Switch, Table } from 'antd'
+import { CopyOutlined, DeleteOutlined, PlusOutlined, SyncOutlined } from '@ant-design/icons'
+import { cleanDNS, createRecord } from './util'
+import BaseExport from '../BaseExport'
 
 import './index.scss'
 
 const { Option } = Select
-const cleanDNS = () => {
-  if (cleanHostResolverCache()) {
-    message.success('缓存刷新成功', 1, () => {
-      chrome.tabs.reload()
-    })
-  } else {
-    message.error('操作失败')
-  }
-}
 
-const createRecord = (record) => ({
-  status: true,
-  type: 'equals',
-  ...record,
-  key: Math.random(),
-})
-
-class ModuleExport extends Component {
+class ModuleExport extends BaseExport {
   constructor(props) {
     super(props)
 
@@ -60,13 +41,6 @@ class ModuleExport extends Component {
     addColumn('操作', 'option', 100)
 
     this.columns = columnList
-  }
-
-  handleUpdateRecords = (callback) => {
-    const { onCallback } = this.props
-    onCallback((rootValue) => {
-      return callback(rootValue.proxyList)
-    })
   }
 
   getColumnRenders() {
@@ -110,9 +84,8 @@ class ModuleExport extends Component {
             className="field-type"
             value={value}
             onChange={handleChange}>
-            <Option value="equals">等于</Option>
-            <Option value="contains">包含</Option>
-            <Option value="regex">正则表达式</Option>
+            <Option value="Equals">等于</Option>
+            <Option value="Regex">正则表达式</Option>
           </Select>
         )
       },
