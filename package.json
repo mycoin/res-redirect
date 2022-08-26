@@ -34,6 +34,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^7.3.1",
     "eslint-config-takla": "^0.0.x",
+    "fs-extra": "^10.1.0",
     "webpack-utils": "^8.0.1"
   },
   "author": "mycoin",
