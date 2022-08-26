@@ -1,8 +1,10 @@
 #!/bin/bash
-if [[ -d target ]]; then
-    rm -rf ./target
+APP_NAME='res-redirect'
+
+if [[ -d $APP_NAME ]]; then
+    rm -rf $APP_NAME
 fi
 
 npm run build
-mkdir -p target
-cp -r manifest.json *.html support dist target
+mkdir -p $APP_NAME
+cp -r manifest.json *.html support README.md dist $APP_NAME
