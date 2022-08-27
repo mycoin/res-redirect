@@ -19,7 +19,6 @@ const placeholderMap = {
     targetResult: 'http://127.0.0.1:8080/$1/',
   },
 }
-
 class ModuleExport extends BaseExport {
   constructor(props) {
     super(props)
@@ -66,11 +65,7 @@ class ModuleExport extends BaseExport {
             enable,
           })
         }
-        return (
-          <Switch
-            onChange={handleChange}
-            checked={value} />
-        )
+        return <Switch onChange={handleChange} checked={value} />
       },
       note: (value, index) => {
         const handleChange = (event) => {
@@ -78,19 +73,14 @@ class ModuleExport extends BaseExport {
             note: event.target.value,
           })
         }
-        return (
-          <Input value={value} onChange={handleChange} />
-        )
+        return <Input value={value} onChange={handleChange} />
       },
       type: (value, index) => {
         const handleChange = (type) => updateRecordWith(index, {
           type,
         })
         return (
-          <Select
-            className="field-type"
-            value={value}
-            onChange={handleChange}>
+          <Select className="field-type" value={value} onChange={handleChange}>
             <Option value="useEqual">useEqual</Option>
             <Option value="regex">regex</Option>
           </Select>
@@ -107,7 +97,8 @@ class ModuleExport extends BaseExport {
           <Input
             value={value}
             placeholder={(placeholderMap[type] || {}).onMatch}
-            onChange={handleChange} />
+            onChange={handleChange}
+          />
         )
       },
       targetResult: (value, index, record) => {
@@ -121,7 +112,8 @@ class ModuleExport extends BaseExport {
           <Input
             value={value}
             placeholder={(placeholderMap[type] || {}).targetResult}
-            onChange={handleChange} />
+            onChange={handleChange}
+          />
         )
       },
       option: (_, index, record) => {
@@ -137,12 +129,11 @@ class ModuleExport extends BaseExport {
         }
         return (
           <div className="field-option">
-            <Button onClick={handleCopy}>
-              Copy
-            </Button>
+            <Button onClick={handleCopy}>Copy</Button>
             <Popconfirm
               title="Will you remove this record?"
-              onConfirm={handleRemove}>
+              onConfirm={handleRemove}
+            >
               <Button type="primary" danger>
                 Delete
               </Button>
@@ -165,7 +156,8 @@ class ModuleExport extends BaseExport {
       <div className="resource-proxy-list">
         <div className="topbar-actions content-wrapper">
           <Button type="primary" onClick={handleAdd}>
-            <PlusOutlined />Add
+            <PlusOutlined />
+            Add
           </Button>
           <Button onClick={cleanDNS}>
             <SyncOutlined />
@@ -177,9 +169,9 @@ class ModuleExport extends BaseExport {
             size="small"
             bordered
             columns={this.columns}
-            dataSource={value.proxyList} />
+            dataSource={value.proxyList}
+          />
         </div>
-
       </div>
     )
   }

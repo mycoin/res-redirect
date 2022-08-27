@@ -1,6 +1,9 @@
 html,
 body {
-  background: #f0f2f5;
+  background: url("./assets/bg.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
 }
 #content {
   min-width: 380px;
@@ -22,9 +25,8 @@ body {
     margin: 30px 0;
 
     .content-wrapper {
-      border-radius: 6px;
       padding: 20px;
-      background: #fff;
+      background: #FFFFFFAA;
       margin-bottom: 15px;
     }
   }
