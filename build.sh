@@ -10,4 +10,3 @@ mkdir -p $APP_NAME
 cp -r manifest.json *.html support README.md dist $APP_NAME
 
 zip -vr $APP_NAME.zip $APP_NAME/
-rm -rf $APP_NAME
