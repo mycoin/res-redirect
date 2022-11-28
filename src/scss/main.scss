@@ -1,9 +1,6 @@
 html,
 body {
-  background: url("./assets/bg.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top center;
+  background: #F7F8FA;
 }
 #content {
   min-width: 380px;
@@ -17,7 +14,7 @@ body {
 }
 
 .layout {
-  width: 1080px;
+  width: 1140px;
   margin: 0 auto;
 
   .layout-content {

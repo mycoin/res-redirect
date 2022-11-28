@@ -6,6 +6,7 @@ let initTime = Date.now()
 const createRecord = (record) => ({
   enable: true,
   type: 'useEqual',
+
   ...record,
   key: initTime--,
 })

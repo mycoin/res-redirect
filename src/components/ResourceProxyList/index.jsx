@@ -14,11 +14,16 @@ const placeholderMap = {
     onMatch: 'https://www.google.com',
     targetResult: 'http://127.0.0.1:8080',
   },
+  replace: {
+    onMatch: 'ajax.googleapis.com',
+    targetResult: 'ajax.useso.com',
+  },
   regex: {
     onMatch: 'https?://(.*?).google.com/',
     targetResult: 'http://127.0.0.1:8080/$1/',
   },
 }
+
 class ModuleExport extends BaseExport {
   constructor(props) {
     super(props)
@@ -81,6 +86,7 @@ class ModuleExport extends BaseExport {
         })
         return (
           <Select className="field-type" value={value} onChange={handleChange}>
+            <Option value="replace">replace</Option>
             <Option value="useEqual">useEqual</Option>
             <Option value="regex">regex</Option>
           </Select>
@@ -93,13 +99,7 @@ class ModuleExport extends BaseExport {
             onMatch: event.target.value,
           })
         }
-        return (
-          <Input
-            value={value}
-            placeholder={(placeholderMap[type] || {}).onMatch}
-            onChange={handleChange}
-          />
-        )
+        return <Input value={value} placeholder={(placeholderMap[type] || {}).onMatch} onChange={handleChange} />
       },
       targetResult: (value, index, record) => {
         const { type } = record
@@ -108,13 +108,7 @@ class ModuleExport extends BaseExport {
             targetResult: event.target.value,
           })
         }
-        return (
-          <Input
-            value={value}
-            placeholder={(placeholderMap[type] || {}).targetResult}
-            onChange={handleChange}
-          />
-        )
+        return <Input value={value} placeholder={(placeholderMap[type] || {}).targetResult} onChange={handleChange} />
       },
       option: (_, index, record) => {
         const handleRemove = () => {
@@ -130,10 +124,7 @@ class ModuleExport extends BaseExport {
         return (
           <div className="field-option">
             <Button onClick={handleCopy}>Copy</Button>
-            <Popconfirm
-              title="Will you remove this record?"
-              onConfirm={handleRemove}
-            >
+            <Popconfirm title="Will you remove this record?" onConfirm={handleRemove}>
               <Button type="primary" danger>
                 Delete
               </Button>
@@ -165,12 +156,7 @@ class ModuleExport extends BaseExport {
           </Button>
         </div>
         <div className="content-wrapper">
-          <Table
-            size="small"
-            bordered
-            columns={this.columns}
-            dataSource={value.proxyList}
-          />
+          <Table size="small" bordered columns={this.columns} dataSource={value.proxyList} />
         </div>
       </div>
     )
