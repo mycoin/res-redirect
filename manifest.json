@@ -1,6 +1,6 @@
 {
   "name": "Res-Redirect",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A static resources URL redirect tool.",
   "icons": {
     "128": "support/128x128.png",
@@ -25,5 +25,11 @@
   "host_permissions": ["*://*/*"],
   "manifest_version": 3,
   "options_page": "index.html",
-  "permissions": ["webRequest", "declarativeNetRequest", "declarativeNetRequestFeedback", "tabs", "storage", "unlimitedStorage"]
+  "permissions": [
+    "declarativeNetRequest", 
+    "declarativeNetRequestFeedback", 
+    "tabs", 
+    "storage", 
+    "unlimitedStorage"
+  ]
 }
