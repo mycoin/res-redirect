@@ -1,23 +1,25 @@
+/* eslint-disable react/no-danger */
 import React from 'react'
 import { Button, Input, Popconfirm, Select, Switch, Table } from 'antd'
 import BaseExport from '../BaseExport'
+import renderHtml from './renderHtml.ejs'
 import { cleanDNS, createRecord } from '../util'
 
 import './index.scss'
 
 const { Option } = Select
 const placeholderMap = {
+  replace: {
+    onMatch: 'https://www.baidu.com/s?wd=(param)',
+    targetResult: 'http://localhost/search?wd=(1)',
+  },
   useEqual: {
     onMatch: 'https://www.google.com',
     targetResult: 'http://127.0.0.1:8080',
   },
-  replace: {
-    onMatch: 'ajax.googleapis.com',
-    targetResult: 'ajax.useso.com',
-  },
   regex: {
-    onMatch: 'https?://(.*?).google.com/',
-    targetResult: 'http://127.0.0.1:8080/$1/',
+    onMatch: 'https://www.baidu.com/s\\?wd=([^&]+)',
+    targetResult: 'http://localhost/search?wd=\\1',
   },
 }
 
@@ -32,6 +34,7 @@ class ModuleExport extends BaseExport {
         title: labelName,
         key,
         width: widthNumber,
+        className: key,
         dataIndex: key,
       }
       config.render = (value, record, index) => {
@@ -45,10 +48,10 @@ class ModuleExport extends BaseExport {
     }
 
     addColumn('enable', 'enable', 80)
-    addColumn('type', 'type', 80)
+    addColumn('mode', 'type', 80)
     addColumn('match', 'onMatch')
     addColumn('target', 'targetResult')
-    addColumn('note', 'note', 180)
+    addColumn('name', 'note', 180)
     addColumn('option', 'option', 100)
 
     this.columns = columnList
@@ -67,7 +70,11 @@ class ModuleExport extends BaseExport {
             enable,
           })
         }
-        return <Switch onChange={handleChange} checked={value} />
+        return (
+          <div className="center">
+            <Switch size="small" onChange={handleChange} checked={value} />
+          </div>
+        )
       },
       note: (value, index) => {
         const handleChange = (event) => {
@@ -156,6 +163,10 @@ class ModuleExport extends BaseExport {
 
     return (
       <div className="resource-proxy-list">
+        <div className="topbar-logo">
+          Res-Redirect
+          <span>1.0.6</span>
+        </div>
         <div className="topbar-actions content-wrapper">
           <Button type="primary" onClick={handleAdd}>
             add
@@ -173,6 +184,10 @@ class ModuleExport extends BaseExport {
               pageSize: 20,
             }}
           />
+          <div className="content-help" dangerouslySetInnerHTML={{ __html: renderHtml({}) }} />
+        </div>
+        <div className="other-urls">
+          <a href="https://github.com/mycoin/res-redirect">Github</a>
         </div>
       </div>
     )

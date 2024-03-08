@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Switch, Table, Tag } from 'antd'
 import BaseExport from '../BaseExport'
-import { cleanDNS } from '../util'
+import { cleanDNS, colorMap } from '../util'
 
 import './index.scss'
 
@@ -32,8 +32,8 @@ class ModuleExport extends BaseExport {
       columnList.push(config)
     }
 
-    addColumn('type', 'type', 80)
-    addColumn('note', 'note', 180)
+    addColumn('mode', 'type', 80)
+    addColumn('name', 'note', 180)
     addColumn('enable', 'enable', 80)
 
     this.columns = columnList
@@ -49,7 +49,7 @@ class ModuleExport extends BaseExport {
       note: 'note',
       type: (value) => (
         <div className="align-center">
-          <Tag color="magenta">{value}</Tag>
+          <Tag color={colorMap[value]}>{value}</Tag>
         </div>
       ),
       enable: (value, index) => {

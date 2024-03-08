@@ -1,13 +1,42 @@
 .resource-proxy-list {
+  position: relative;
+  display: block;
+  padding-top: 30px;
+  .topbar-logo {
+    font-size: 28px;
+    background: url('../../scss/assets/icon.png');
+    background-size: 32px;
+    background-repeat: no-repeat;
+    line-height: 34px;
+    height: 54px;
+    padding-left: 42px;
+
+    span {
+      font-size: 10px;
+      margin-left: 6px;
+    }
+  }
   .topbar-actions {
-    text-align: right;
+    position: absolute;
+    top: 30px;
+    right: 0;
     button {
       margin-left: 6px;
     }
   }
+  th,
+  td {
+    &.enable,
+    &.option {
+      text-align: center;
+    }
+  }
+  .ant-table {
+    background: #ffffffbf;
+  }
 
   .field-type {
-    width: 120px;
+    width: 105px;
   }
 
   .field-option {
@@ -17,6 +46,36 @@
     button {
       margin: 0 3px;
       padding: 0 10px;
+    }
+  }
+
+  .content-help {
+    padding: 16px;
+    font-size: 14px;
+    color: #666;
+    background: #ffffff5e;
+    margin-top: 25px;
+    line-height: 1.777;
+    pre {
+      font-family: initial;
+      margin: 0;
+    }
+    em {
+      font-style: normal;
+      background: #00000036;
+      display: inline-block;
+      padding: 2px 4px;
+      margin: 0 2px;
+      border-radius: 6px;
+      line-height: 1;
+      color: #fff;
+      zoom: 0.95;
+    }
+  }
+
+  .other-urls {
+    a {
+      margin: 0 3px;
     }
   }
 }

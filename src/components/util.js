@@ -20,5 +20,9 @@ const cleanDNS = () => {
     message.error('Failed. add "--enable-net-benchmarking" to chrome args')
   }
 }
-
-export { createRecord, cleanDNS }
+const colorMap = {
+  replace: '#2DB7F5',
+  useEqual: '#87D068',
+  regex: '#108EE9',
+}
+export { colorMap, createRecord, cleanDNS }
