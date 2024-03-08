@@ -6,7 +6,4 @@ import './scss/index.scss'
 
 const isMini = /isMini/.test(location.search)
 
-ReactDOM.render(
-  <MainApplication isMini={isMini} />,
-  document.getElementById('content'),
-)
+ReactDOM.render(<MainApplication isMini={isMini} />, document.getElementById('content'))

@@ -5,9 +5,9 @@ let initTime = Date.now()
 
 const createRecord = (record) => ({
   enable: true,
-  type: 'useEqual',
-
+  type: 'replace',
   ...record,
+
   key: initTime--,
 })
 
@@ -17,11 +17,8 @@ const cleanDNS = () => {
       chrome.tabs.reload()
     })
   } else {
-    message.error('Failed to clean hosts cache.')
+    message.error('Failed. add "--enable-net-benchmarking" to chrome args')
   }
 }
 
-export {
-  createRecord,
-  cleanDNS,
-}
+export { createRecord, cleanDNS }

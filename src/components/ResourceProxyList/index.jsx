@@ -1,8 +1,5 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
 import { Button, Input, Popconfirm, Select, Switch, Table } from 'antd'
-import { PlusOutlined, SyncOutlined } from '@ant-design/icons'
 import BaseExport from '../BaseExport'
 import { cleanDNS, createRecord } from '../util'
 
@@ -99,7 +96,14 @@ class ModuleExport extends BaseExport {
             onMatch: event.target.value,
           })
         }
-        return <Input value={value} placeholder={(placeholderMap[type] || {}).onMatch} onChange={handleChange} />
+        return (
+          <Input
+            /**/
+            value={value}
+            placeholder={(placeholderMap[type] || {}).onMatch}
+            onChange={handleChange}
+          />
+        )
       },
       targetResult: (value, index, record) => {
         const { type } = record
@@ -108,7 +112,14 @@ class ModuleExport extends BaseExport {
             targetResult: event.target.value,
           })
         }
-        return <Input value={value} placeholder={(placeholderMap[type] || {}).targetResult} onChange={handleChange} />
+        return (
+          <Input
+            /**/
+            value={value}
+            placeholder={(placeholderMap[type] || {}).targetResult}
+            onChange={handleChange}
+          />
+        )
       },
       option: (_, index, record) => {
         const handleRemove = () => {
@@ -123,10 +134,10 @@ class ModuleExport extends BaseExport {
         }
         return (
           <div className="field-option">
-            <Button onClick={handleCopy}>Copy</Button>
-            <Popconfirm title="Will you remove this record?" onConfirm={handleRemove}>
+            <Button onClick={handleCopy}>copy</Button>
+            <Popconfirm title="Delete this record, sure?" onConfirm={handleRemove}>
               <Button type="primary" danger>
-                Delete
+                delete
               </Button>
             </Popconfirm>
           </div>
@@ -147,16 +158,21 @@ class ModuleExport extends BaseExport {
       <div className="resource-proxy-list">
         <div className="topbar-actions content-wrapper">
           <Button type="primary" onClick={handleAdd}>
-            <PlusOutlined />
-            Add
+            add
           </Button>
-          <Button onClick={cleanDNS}>
-            <SyncOutlined />
-            clean DNS
-          </Button>
+          <Button onClick={cleanDNS}>clean DNS</Button>
         </div>
         <div className="content-wrapper">
-          <Table size="small" bordered columns={this.columns} dataSource={value.proxyList} />
+          <Table
+            size="small"
+            bordered
+            columns={this.columns}
+            dataSource={value.proxyList}
+            pagination={{
+              hideOnSinglePage: true,
+              pageSize: 20,
+            }}
+          />
         </div>
       </div>
     )

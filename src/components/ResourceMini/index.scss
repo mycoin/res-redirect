@@ -1,6 +1,6 @@
 .resource-proxy-mini {
   padding: 20px;
-  background: #FFF;
+  background: #fff;
 
   .topbar-actions {
     text-align: right;
@@ -10,6 +10,9 @@
     }
   }
 
+  .align-center {
+    text-align: center;
+  }
   .field-type {
     width: 120px;
   }

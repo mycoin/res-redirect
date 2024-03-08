@@ -40,7 +40,7 @@ class Application extends Component {
         })
       },
     )
-  };
+  }
 
   render() {
     const { isMini } = this.props
@@ -51,10 +51,10 @@ class Application extends Component {
     ) : (
       <div className="layout">
         <div className="layout-content">
-          <ResourceProxyList
-            value={value}
-            onCallback={this.handleUpdateImmer}
-          />
+          <a target="_blank" href="https://www.baidu.com/s?wd=阿里巴巴&e=2" rel="noreferrer">
+            wd
+          </a>
+          <ResourceProxyList value={value} onCallback={this.handleUpdateImmer} />
         </div>
       </div>
     )

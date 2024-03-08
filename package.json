@@ -20,8 +20,6 @@
     }
   },
   "dependencies": {
-    "@ant-design/colors": "^6.0.0",
-    "@ant-design/icons": "^4.7.0",
     "antd": "^4.21.4",
     "immer": "^9.0.15",
     "react": "^16.14.0",
@@ -35,7 +33,9 @@
     "eslint": "^7.3.1",
     "eslint-config-takla": "^0.0.x",
     "fs-extra": "^10.1.0",
-    "prettier": "^2.8.0",
+    "prettier": "^3.2.5",
+    "prettier-eslint": "^16.3.0",
+    "typescript": "^5.3.3",
     "webpack-utils": "^8.0.1"
   },
   "author": "mycoin",
