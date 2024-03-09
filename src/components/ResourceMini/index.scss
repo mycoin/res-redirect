@@ -1,6 +1,8 @@
 .resource-proxy-mini {
-  padding: 20px;
-  background: #fff;
+  padding: 16px;
+  width: 360px;
+  height: 100vh;
+  background-color: #ffffffab;
 
   .topbar-actions {
     text-align: right;
@@ -8,6 +10,18 @@
     button {
       margin-left: 6px;
     }
+  }
+
+  th,
+  td {
+    &.enable,
+    &.type,
+    &.option {
+      text-align: center;
+    }
+  }
+  .ant-table {
+    background: #ffffffbf;
   }
 
   .align-center {

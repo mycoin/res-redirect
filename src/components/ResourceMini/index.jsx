@@ -20,6 +20,7 @@ class ModuleExport extends BaseExport {
         title: labelName,
         key,
         width: widthNumber,
+        className: key,
         dataIndex: key,
       }
       config.render = (value, record, index) => {
@@ -32,9 +33,9 @@ class ModuleExport extends BaseExport {
       columnList.push(config)
     }
 
-    addColumn('mode', 'type', 80)
-    addColumn('name', 'note', 180)
-    addColumn('enable', 'enable', 80)
+    addColumn('Mode', 'type', 90)
+    addColumn('Name', 'note', 180)
+    addColumn('Enable', 'enable', 90)
 
     this.columns = columnList
   }
@@ -60,7 +61,7 @@ class ModuleExport extends BaseExport {
         }
         return (
           <div className="align-center">
-            <Switch onChange={handleChange} checked={value} />
+            <Switch size="small" onChange={handleChange} checked={value} />
           </div>
         )
       },
@@ -72,13 +73,24 @@ class ModuleExport extends BaseExport {
     return (
       <div className="resource-proxy-mini">
         <div className="topbar-actions content-wrapper">
-          <Button type="primary" onClick={handleOpen}>
+          <Button size="small" type="primary" onClick={handleOpen}>
             Manage
           </Button>
-          <Button onClick={cleanDNS}>clean DNS</Button>
+          <Button size="small" onClick={cleanDNS}>
+            clear DNS Cache
+          </Button>
         </div>
         <div className="content-wrapper">
-          <Table size="small" bordered columns={this.columns} dataSource={value.proxyList} />
+          <Table
+            size="small"
+            bordered
+            columns={this.columns}
+            dataSource={value.proxyList}
+            pagination={{
+              hideOnSinglePage: true,
+              pageSize: 20,
+            }}
+          />
         </div>
       </div>
     )

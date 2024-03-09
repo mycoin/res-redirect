@@ -4,6 +4,6 @@ import MainApplication from './components/MainApplication'
 
 import './scss/index.scss'
 
-const isMini = /isMini/.test(location.search)
+const miniMode = /isMini=1/.test(location.search)
 
-ReactDOM.render(<MainApplication isMini={isMini} />, document.getElementById('content'))
+ReactDOM.render(<MainApplication miniMode={miniMode} />, document.getElementById('content'))

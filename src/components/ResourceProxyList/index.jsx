@@ -49,7 +49,7 @@ class ModuleExport extends BaseExport {
 
     addColumn('enable', 'enable', 80)
     addColumn('mode', 'type', 80)
-    addColumn('match', 'onMatch')
+    addColumn('urlFilter', 'onMatch')
     addColumn('target', 'targetResult')
     addColumn('name', 'note', 180)
     addColumn('option', 'option', 100)
@@ -70,11 +70,7 @@ class ModuleExport extends BaseExport {
             enable,
           })
         }
-        return (
-          <div className="center">
-            <Switch size="small" onChange={handleChange} checked={value} />
-          </div>
-        )
+        return <Switch size="small" onChange={handleChange} checked={value} />
       },
       note: (value, index) => {
         const handleChange = (event) => {
@@ -171,7 +167,7 @@ class ModuleExport extends BaseExport {
           <Button type="primary" onClick={handleAdd}>
             add
           </Button>
-          <Button onClick={cleanDNS}>clean DNS</Button>
+          <Button onClick={cleanDNS}>clear DNS Cache</Button>
         </div>
         <div className="content-wrapper">
           <Table

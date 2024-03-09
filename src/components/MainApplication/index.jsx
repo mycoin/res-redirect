@@ -43,10 +43,10 @@ class Application extends Component {
   }
 
   render() {
-    const { isMini } = this.props
+    const { miniMode } = this.props
     const { value } = this.state
 
-    return isMini ? (
+    return miniMode ? (
       <ResourceMini value={value} onCallback={this.handleUpdateImmer} />
     ) : (
       <div className="layout">

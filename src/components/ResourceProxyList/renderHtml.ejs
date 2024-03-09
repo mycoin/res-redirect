@@ -1,11 +1,12 @@
 <pre>
-In <em>replace</em> mode, the preset replacement rules are as follows:
-  1). <em>param</em>: Matches any param value that precedes an "&".
-  2). <em>name</em>: Matches any file name that precedes a "/".
-  3). <em>version</em>: Matches the format of a version number.
-  4). <em>any</em> or <em>...</em>: Matches any content.
-
+1. <em>clear DNS Cache</em> requires Chrome started with <em>--enable-net-benchmarking</em> flag, see <a target="_blank" href="https://www.chromium.org/developers/design-documents/extensions/how-the-extension-system-works/chrome-benchmarking-extension/">Benchmarking</a> for further details..
+2. In <em>replace</em> mode, adhere to the following preset substitution rules:
+  · <em>param</em>: Matches any param value that precedes an "&".
+  · <em>name</em>: Matches any file name that precedes a "/".
+  · <em>version</em>: Matches the version format, like 1.22.1
+  · <em>any</em> or <em>...</em>: Matches any content.
   Numbers enclosed in parentheses <em>(1-9)</em> can be used to insert corresponding capture groups. <em>(0)</em> represents the entire matched text.
-
-If using <em>regex</em> mode, please refer to the <a target="_blank" href="https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest">Chrome Developer Center</a>
+3. If using <em>regex</em> mode, see <a target="_blank" href="https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest">declarativeNetRequest</a>.
+4. If using <em>useEqual</em> mode, Any matching address will be redirected. see <a target="_blank" href="https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest?hl=zh-cn#filter-matching-charactgers">urlFilter</a>
 </pre>
+
