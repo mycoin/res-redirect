@@ -161,7 +161,7 @@ class ModuleExport extends BaseExport {
       <div className="resource-proxy-list">
         <div className="topbar-logo">
           Res-Redirect
-          <span>1.0.6</span>
+          <span>1.0.7</span>
         </div>
         <div className="topbar-actions content-wrapper">
           <Button type="primary" onClick={handleAdd}>
@@ -183,6 +183,7 @@ class ModuleExport extends BaseExport {
           <div className="content-help" dangerouslySetInnerHTML={{ __html: renderHtml({}) }} />
         </div>
         <div className="other-urls">
+          <a href="https://chrome.google.com/webstore/detail/kohoehibelgfnnicniognekbkcgeakca">chromeStore</a>
           <a href="https://github.com/mycoin/res-redirect">Github</a>
         </div>
       </div>

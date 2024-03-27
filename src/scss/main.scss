@@ -5,7 +5,9 @@ body {
 }
 
 #content {
-  min-height: 100vh;
+  height: 100vh;
+  min-height: 440px;
+  overflow: scroll;
 }
 
 .ant-table {
